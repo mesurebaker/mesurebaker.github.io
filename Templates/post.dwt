@@ -1,18 +1,18 @@
 <!DOCTYPE HTML>
 <html lang="en" class="no-js">
    <head>
-      <meta charset="utf-8">
+      <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8” />
 	  <script> document.documentElement.className = 'js'; </script>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' />
-      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="../css/style.css" />
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-      <script src="js/selectivizr.js"></script>
+      <script src="../js/selectivizr.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-
-      <title> Mesure的电影小站 </title>
-
-   <style type="text/css">
+      <!-- TemplateBeginEditable name="doctitle" -->
+      <title>Mesure的电影小站</title>
+      <!-- TemplateEndEditable -->
+      <style type="text/css">
 
 #nav { width:315px; line-height: 40px; list-style-type: none; text-align:left; /*定义整个ul菜单的行高和背景色*/
 }
@@ -42,163 +42,51 @@
 -->
 #PARENT { width:315px; }
 
-      #focus {width:450px; height:280px; overflow:hidden; position:absolute; right:40px; top:20px; bottom:20px;}
-      #focus ul {height:380px; position:absolute;}
-      #focus ul li {float:left; width:450px; height:280px; overflow:hidden; position:relative; background:#000;}
-      #focus ul li div {position:absolute; overflow:hidden;}
-      #focus .btnBg {position:absolute; width:450px; height:20px; left:0; bottom:0; background:#000;}
-      #focus .btn {position:absolute; width:430px; height:10px; padding:5px 10px; right:0; bottom:0; text-align:right;}
-      #focus .btn span {display:inline-block; _display:inline; _zoom:1; width:25px; height:10px; _font-size:0; margin-left:5px; cursor:pointer;                        background:#fff;}
-      #focus .btn span.on {background:#fff;}
-      #focus .preNext {width:45px; height:100px; position:absolute; top:90px; background:url(img/sprite.png) no-repeat 0 0; cursor:pointer;}
-      #focus .pre {left:0;}
-      #focus .next {right:0; background-position:right top;}
-
-      .suofang {MARGIN: auto;WIDTH: 300px;}
-      .suofang img{MAX-WIDTH: 100%;HEIGHT: auto;width:expression(this.width > 300 ? "300px" : this.width);}
+      .suofang {MARGIN: auto;WIDTH: 550px;}
+      .suofang img{MAX-WIDTH: 100%;HEIGHT: auto;width:expression(this.width > 550 ? "550px" : this.width);}
    </style>
-   <script type="text/javascript" src="js/jquery.min.js"></script>
-   <script type="text/javascript">
-    $(function() {
-	var sWidth = $("#focus").width(); //获取焦点图的宽度（显示面积）
-	var len = $("#focus ul li").length; //获取焦点图个数
-	var index = 0;
-	var picTimer;
-	
-	//以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
-	var btn = "<div class='btnBg'></div><div class='btn'>";
-	for(var i=0; i < len; i++) {
-		btn += "<span></span>";
-	}
-	btn += "</div><div class='preNext pre'></div><div class='preNext next'></div>";
-	$("#focus").append(btn);
-	$("#focus .btnBg").css("opacity",0.5);
+   <script type="text/javascript" src="../js/jquery.min.js"></script>
 
-	//为小按钮添加鼠标滑入事件，以显示相应的内容
-	$("#focus .btn span").css("opacity",0.4).mouseenter(function() {
-		index = $("#focus .btn span").index(this);
-		showPics(index);
-	}).eq(0).trigger("mouseenter");
-
-	//上一页、下一页按钮透明度处理
-	$("#focus .preNext").css("opacity",0.2).hover(function() {
-		$(this).stop(true,false).animate({"opacity":"0.5"},300);
-	},function() {
-		$(this).stop(true,false).animate({"opacity":"0.2"},300);
-	});
-
-	//上一页按钮
-	$("#focus .pre").click(function() {
-		index -= 1;
-		if(index == -1) {index = len - 1;}
-		showPics(index);
-	});
-
-	//下一页按钮
-	$("#focus .next").click(function() {
-		index += 1;
-		if(index == len) {index = 0;}
-		showPics(index);
-	});
-
-	//本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
-	$("#focus ul").css("width",sWidth * (len));
-	
-	//鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
-	$("#focus").hover(function() {
-		clearInterval(picTimer);
-	},function() {
-		picTimer = setInterval(function() {
-			showPics(index);
-			index++;
-			if(index == len) {index = 0;}
-		},4000); //此4000代表自动播放的间隔，单位：毫秒
-	}).trigger("mouseleave");
-	
-	//显示图片函数，根据接收的index值显示相应的内容
-	function showPics(index) { //普通切换
-		var nowLeft = -index*sWidth; //根据index值计算ul元素的left值
-		$("#focus ul").stop(true,false).animate({"left":nowLeft},300); //通过animate()调整ul元素滚动到计算出的position
-		//$("#focus .btn span").removeClass("on").eq(index).addClass("on"); //为当前的按钮切换到选中的效果
-		$("#focus .btn span").stop(true,false).animate({"opacity":"0.4"},300).eq(index).stop(true,false).animate({"opacity":"1"},300); //为当前的按钮切换到选中的效果
-	}
-   });
-
-   </script>
+   <!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
    </head>
    <body>
    
    <header class="container_24">
-      <h1> <a href="index.html"> Mesure的电影小站 </a> </h1>
+      <h1> <a href="../index.html"> Mesure的电影小站 </a> </h1>
       <nav class="grid_17">
          <ul>
             <li>
-               <a href="index.html" class="selected">主页</a>            </li>
+               <a href="../index.html" class="selected">主页</a>
+            </li>
             <li>
-               <a href="#">一句话影评</a>            </li>
+               <a href="#">一句话影评</a>
+            </li>
             <li>
-               <a href="#">关于我</a>            </li>
+               <a href="#">关于我</a>
+            </li>
             <li>
-               <a href="#">联系我</a>            </li>
+               <a href="#">联系我</a>
+            </li>
          </ul>
       </nav>
+	  
    </header>
 
-   <div id="banner-wrap">
-      <div id="banner" class="container_24 rounded">
-         <h2> 欢迎来到我的电影小站 </h2>
-         <div id="focus">
-		<ul>
-			<li><a href="#" target="_blank"><img src="img/flypaper2.jpg" alt="捕蝇纸" /></a></li>
-			<li><a href="#" target="_blank"><img src="img/cry wolf2.jpg" alt="豺狼计划" /></a></li>
-			<li><a href="#" target="_blank"><img src="img/the pianist2.jpg" alt="钢琴家" /></a></li>
-			<li><a href="#" target="_blank"><img src="img/butterfly2.jpg" alt="蝴蝶效应1" /></a></li>
-            <li><a href="#" target="_blank"><img src="img/butterflythree2.jpg" alt="蝴蝶效应3" /></a></li>
-			<li><a href="#" target="_blank"><img src="img/the equalizer2.jpg" alt="伸冤人" /></a></li>
-			<li><a href="#" target="_blank"><img src="img/kickass2.jpg" alt="海扁王1" /></a></li>
-			<li><a href="#" target="_blank"><img src="img/kickasstwo2.jpg" alt="海扁王2" /></a></li>
-			<li><a href="#" target="_blank"><img src="img/extracted2.jpg" alt="记忆提取" /></a></li>
-		</ul>
-         </div>	
-   
-         <p>记录我看过的电影（有一些已经忘啦XD），</p>
-         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用一句话点评。</p>
-         <p>&nbsp;</p>
-         <p>&nbsp;</p>
-         <button> 浏览我的电影&影评 </button>
-         <button> 向我推荐电影 </button>
-      </div>
-       
-      <p id="breadcrumbs" class="container_24 rounded"> 你现在在: 主页 > 欢迎界面 </p>
-   </div>
+   <div id="banner-wrap"><!-- TemplateBeginEditable name="页面信息" -->
+     <p id="breadcrumbs" class="container_24 rounded"> 你现在在: 目录 > 2011年 > 捕蝇纸 </p>
+   <!-- TemplateEndEditable --></div>
 
    <div id="main" class="container_24">
       <div id="primary" class="grid_15">
-         <h3> 欢迎光临</h3>
+         <h3><!-- TemplateBeginEditable name="电影年份" -->2011年1月<!-- TemplateEndEditable --></h3>
          <article>            
-               <h2><a href="flypaper.html">捕蝇纸</a></h2>
-               <h6> 首映时间：2011-01-28(圣丹斯电影节) </h6>
-			   <div class="suofang">
-               <img src="img/flypaper.jpg" alt="捕蝇纸" />			   </div>
-               <p> 
-               <a href="flypaper.html"> 继续阅读... </a></p>            
-         </article>
-         <article>            
-               <h2><a href="crywolf.html">豺狼计划</a></h2>
-               <h6> 首映时间：2005-09-16</h6>
-               <div class="suofang">
-			   <img src="img/cry wolf.jpg" alt="豺狼计划" />			   </div>
-               <p>
-               <a href="crywolf.html"> 继续阅读... </a></p>            
-         </article>
-         <article>
-               <h2><a href="pianist.html">钢琴家</a></h2>
-               <h6> 首映时间：2002-05-24 </h6>
-			   <div class="suofang">
-               <img src="img/the pianist.jpg" alt="钢琴家"  />			   </div>
-               <p>
-               <a href="pianist.html"> 继续阅读... </a></p>
-         </article>
+               <h2><!-- TemplateBeginEditable name="影片名称" -->捕蝇纸<!-- TemplateEndEditable --></h2>
+               <h6><!-- TemplateBeginEditable name="上映时间" --> 首映时间：2011-01-28(圣丹斯电影节) <!-- TemplateEndEditable --></h6>
+			   <div class="suofang"><!-- TemplateBeginEditable name="电影海报" --><img src="../img/flypaper.jpg" alt="捕蝇纸" /><!-- TemplateEndEditable -->
+			     <p>
+		         <h4><!-- TemplateBeginEditable name="影评" -->高智商犯罪片，让人猜不透的身份迷局。<!-- TemplateEndEditable --></h4>
+                 </p>
+	       </div></article>
 
          <button> 我的网易博客XD </button>
       </div>
@@ -369,7 +257,7 @@ menuFix();
 
          <section>
             <h3> 我的简介 </h3>
-            <img src="img/WhoWeAre.jpg" alt="我的简介" />
+            <img src="../img/WhoWeAre.jpg" alt="我的简介" />
             <p>这个人很懒，什么也没留下XD</a></p>
          </section>
 
@@ -378,14 +266,18 @@ menuFix();
             <ul>
                <li>
                   <a href="#">
-                     <img src="img/bilibili.jpg" alt="bilibili" />                  </a>               </li>
+                     <img src="../img/bilibili.jpg" alt="bilibili" />
+                  </a>
+               </li>
+
             </ul>
          </section>
       </aside>
    </div>
 
 	   <div id="footer-wrap">
-      <footer class="container_24">      </footer>
+      <footer class="container_24">
+      </footer>
    </div>
 
    <div id="siteInfo">
@@ -394,16 +286,19 @@ menuFix();
       <nav>
          <ul>
             <li>
-               <a href="#">主页</a>            </li>
+               <a href="#">主页</a>
+            </li>
             <li>
-               <a href="#">关于我</a>            </li>
+               <a href="#">关于我</a>
+            </li>
             <li>
-               <a href="#">联系我</a>            </li>
+               <a href="#">联系我</a>
+            </li>
          </ul>
       </nav>
      </footer>
    </div>
 
-	<script src="js/scripts.min.js"></script>
+	<script src="../js/scripts.min.js"></script>
    </body>
 </html>
